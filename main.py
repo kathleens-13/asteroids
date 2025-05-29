@@ -51,11 +51,18 @@ def main():
         # draw all drawable objects
         for object in drawable_group:
             object.draw(screen)
-        # check for collisions
+        # check for collision with player
         for object in asteroid_group:
             if player.collision(object) == True:
                 print("Game Over!")
                 sys.exit()
+        # check for shot collision with asteroids
+        for object in asteroid_group:
+            for shot in shots_group:
+                if shot.collision(object) == True:
+                    shot.kill()
+                    object.kill()
+
 
         dt = game_clock.tick(60) / 1000
         
