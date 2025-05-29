@@ -7,6 +7,7 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+from shot import *
 
 def main():
     print("Starting Asteroids!")
@@ -28,6 +29,9 @@ def main():
     Asteroid.containers = (asteroid_group, updatable_group, drawable_group)
     AsteroidField.containers = (updatable_group)
     asteroid_field = AsteroidField()
+    # create group for shots
+    shots_group = pygame.sprite.Group()
+    Shot.containers = (shots_group, updatable_group, drawable_group)
 
 
 # main game loop
