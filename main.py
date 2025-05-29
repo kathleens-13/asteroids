@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 from constants import *
 from player import *
 from asteroid import *
@@ -46,6 +47,11 @@ def main():
         # draw all drawable objects
         for object in drawable_group:
             object.draw(screen)
+        # check for collisions
+        for object in asteroid_group:
+            if player.collision(object) == True:
+                print("Game Over!")
+                sys.exit()
 
         dt = game_clock.tick(60) / 1000
         
